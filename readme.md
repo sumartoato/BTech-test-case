@@ -11,18 +11,11 @@ As long as the core auth flow works end-to-end, it’s accepted.
 ### 1. Register
 
 - Fields: `email`, `password`, `confirmPassword`
-- Validate:
-
-  - Email format
-  - Password length (min 8 chars recommended)
-  - `password` and `confirmPassword` must match
-
-- Store hashed password (bcrypt/argon2)
 
 ### 2. Login
 
 - Input: `email`, `password`
-- Return: **JWT** (HS256) signed with secret from environment variable
+- Return: **JWT**
 - Token should contain at least:
 
   - `email`
