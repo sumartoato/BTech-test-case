@@ -9,6 +9,8 @@ interface JwtPayload {
   email: string;
 }
 
+/*jwt.strategy.ts*/
+
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(config: ConfigService) {

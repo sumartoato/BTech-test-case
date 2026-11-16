@@ -100,18 +100,22 @@ Migrations run automatically when the backend container starts. Every new user g
 | `INITIAL_BALANCE` | `1000000` | Balance given to new users |
 | `BACKEND_PORT` | `3000` | Host port for the API |
 | `FRONTEND_PORT` | `8080` | Host port for the web app |
+| `DB_PORT` | `5434` | Host port for PostgreSQL (5434 avoids clashing with local installs on 5432/5433) |
 
 For running the backend without Docker, see `backend/.env.example` (`DATABASE_URL`, `JWT_SECRET`, `JWT_EXPIRES_IN`, `INITIAL_BALANCE`, `PORT`).
 
 ## Run locally (without Docker)
 
 ```bash
+# database (Docker, published on localhost:5434)
+docker compose up -d db
+
 # backend
 cd backend
-cp .env.example .env    # point DATABASE_URL to your postgres
+cp .env.example .env    # DATABASE_URL already points to localhost:5434
 npm install
 npx prisma migrate deploy
-npm run start:dev
+npm run start:dev       # Swagger UI: http://localhost:3000/api/docs (disabled when NODE_ENV=production)
 
 # frontend (another terminal)
 cd frontend

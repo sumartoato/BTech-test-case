@@ -19,6 +19,8 @@ export class AuthService {
     private readonly config: ConfigService,
   ) {}
 
+  /*part register*/
+
   async register(dto: RegisterDto) {
     const email = dto.email.trim().toLowerCase();
 
@@ -46,6 +48,8 @@ export class AuthService {
     }
   }
 
+  /*part login*/
+  
   async login(dto: LoginDto) {
     const email = dto.email.trim().toLowerCase();
     const user = await this.prisma.user.findUnique({ where: { email } });
